@@ -1,0 +1,75 @@
+Polymorphism allows reuse of code by allowing objects of related types to be treated the same.
+
+Consider that you might need dozens of subclasses that behave differently:
+
+struct Shape1: public Shape { /* .. */ }; // triangle
+struct Shape2: public Shape { /* .. */ }; // rectangle
+// ...
+struct ShapeN: public Shape { /* .. */ }; // projection of rhombic triacontahedron
+Consider that you might need to process objects pointed by an array of Shape pointers.
+
+With polymorphism, you need a single vector, and a single loop with virtual function calls:
+
+std::vector<Shape*> v = get_shape_vector();
+for(Shape* s : v)
+    s->draw();
+Without polymorphism, you would have manage a separate array for each type and process them separately:
+
+std::vector<Shape1> v1 = get_shape1_vector();
+std::vector<Shape2> v2 = get_shape2_vector();
+// ...
+std::vector<ShapeN> vN = get_shapeN_vector();
+
+for(Shape1& s : v1)
+    s.draw();
+for(Shape2& s : v2)
+    s.draw();
+// ...
+for(ShapeN& s : vN)
+    s.draw();
+The 3 lines of code using polymorphism are way easier to maintain than the 3*N lines of code not using polymorphism.
+
+Consider that you might need to modify the process. Perhaps you want to add a function call before drawing. This is simple when you have polymorphism on your side:
+
+void pre_draw(Shape*);
+
+for(Shape* s : v) {
+    pre_draw(s);
+    s->draw();
+}
+Without polymorphism, you need to define dozens of functions and modify each of the dozen loops:
+
+void pre_draw1(Shape1&);
+void pre_draw2(Shape2&);
+// ...
+void pre_drawN(ShapeN&);
+
+for(Shape1& s : v1) {
+    pre_draw1(s);
+    s.draw();
+}
+for(Shape2& s : v1) {
+    pre_draw2(s);
+    s.draw();
+}
+// ...
+for(ShapeN& s : v1) {
+    pre_drawN(s);
+    s.draw();
+}
+Consider that you may add shapes later. With polymorphism, you simply need to define the new type, and the virtual function. You can simply add pointers to it into the array and they will be processed just like objects of every other compatible type.
+
+struct ShapeN1: public Shape { /* .. */ }; // yet another shape
+Without polymorhpism, besides defining the new type, you would have to create a new array for it. And you would need to create a new pre_draw function. And you would need to add a new loop to process them.
+
+void pre_drawN1(ShapeN1&);
+// ...
+std::vector<ShapeN1> vN1 = get_shapeN1_vector();
+// ...
+for(ShapeN1& s : vN1) {
+    pre_drawN1(s);
+    s.draw();
+}
+In fact, you would need to go through your entire code base for places where each of the shape type is processed and add the code for the new type there.
+
+Now, N might be small or great. The greater N is, the more repetition polymorphism avoids. But, no matter how few subclasses you have, not having to look through your entire code base when you add a new one is a great boon.
