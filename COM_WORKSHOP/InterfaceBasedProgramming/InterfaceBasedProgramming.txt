@@ -11,7 +11,9 @@ Let us take a look at some of the subcategories of the functions provided by CWn
 -Window state functions
 -Window size and position
 -Window access 
--menuloop notification etc etc 
+-menuloop notification 
+
+etc etc 
 
 While it is true that the CWnd class does provide us with methods that "belong together"( they are all window related functions )
 but this one class may be burdened with too much of a responsibility. Rather than exposing a single mammoth public interface to the 
@@ -28,3 +30,9 @@ provide implementation,state data, or private helper functions. This is much "un
 of the above, as well as a set of virtual functions.
 
 
+INTERFACES PROVIDE DEEPER ENCAPSULATION :
+
+The core trait of interface based programming is that object users can access the object's functionality through in built interfaces and not the 
+object instance itself.
+
+---- In com development, the clients never directly create a object instances.
