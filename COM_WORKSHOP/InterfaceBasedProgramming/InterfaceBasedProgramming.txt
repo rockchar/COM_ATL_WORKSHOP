@@ -21,4 +21,10 @@ Imagine if the CWnd class exposed a collection of interfaces such as IWindowText
 forth.
 
 Each of these interfaces will expose a single set of related functions. Obviously the interface named IWindowMenu would contain interfaces that
-are related to the creation and handling of the menu.
+are related to the creation and handling of the menu.      
+
+NOTE: What makes an interface-based programming unique from traditional object oriented development is the key point that interfaces never
+provide implementation,state data, or private helper functions. This is much "unlike" a traditional abstract base class which could provide all 
+of the above, as well as a set of virtual functions.
+
+
