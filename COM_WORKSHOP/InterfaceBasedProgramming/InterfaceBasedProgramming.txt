@@ -1,0 +1,24 @@
+Interfaces have many uses. One of them can be factoring a single public interface into many discrete 
+interfaces.
+
+Let us consider an example for the MFC class CWnd. The CWnd class of MFC is the base class for all dialogs, 
+all graphical user interface (GUI) widgets,frames and views in the library.
+
+As we examine the full set of methods exposed by CWnd, we can see that the mass of the functions can be partitioned 
+into smaller and logical subsets.
+
+Let us take a look at some of the subcategories of the functions provided by CWnd
+-Window state functions
+-Window size and position
+-Window access 
+-menuloop notification etc etc 
+
+While it is true that the CWnd class does provide us with methods that "belong together"( they are all window related functions )
+but this one class may be burdened with too much of a responsibility. Rather than exposing a single mammoth public interface to the 
+object user, the class could expose a collection of interfaces, each with a well defined set of semantically related functions.
+
+Imagine if the CWnd class exposed a collection of interfaces such as IWindowText,IWindowMenu, IWindowInit, IWindowCoordinate so on and so
+forth.
+
+Each of these interfaces will expose a single set of related functions. Obviously the interface named IWindowMenu would contain interfaces that
+are related to the creation and handling of the menu.

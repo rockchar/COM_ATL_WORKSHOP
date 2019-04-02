@@ -6,9 +6,9 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	CEmployee emp;
+	//CEmployee emp;
 	CSalesEmployee salesemp;
-	emp.DisplayClassType();
+	//emp.DisplayClassType();
 	salesemp.DisplayClassType();
 	return 0;
 }

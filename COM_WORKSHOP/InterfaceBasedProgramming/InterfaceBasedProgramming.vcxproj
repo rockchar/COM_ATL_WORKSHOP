@@ -76,6 +76,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="InterfaceBasedProgramming.txt" />
     <Text Include="Polymorphism.txt" />
     <Text Include="ReadMe.txt" />
   </ItemGroup>
