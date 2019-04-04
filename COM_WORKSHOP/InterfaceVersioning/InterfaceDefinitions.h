@@ -74,12 +74,12 @@ ________________________________________________________________________________
 
 
 ////// versioning published inerfaces
-
 /*********************************** NOTES ***************************************
 Once an interface is published, we cannot change it in anyway. Interfaces define a 
 contract. In interface-based programming the contract revolves around the 
 Object User( referred as client ) and the object itself ( often called the co-class in
-COM lingo.
+COM lingo.)
+
 The interface contract is fairly simple, the object itself agrees to the following 
 "once an object supports a given interface,the object in question must continue to 
 support the interface without modification(e.g. you canot chane the names or parameter 
@@ -87,4 +87,10 @@ sets of the methods,you cant reorder the methods, canot rename the interface its
 Te client also agrees to the following in the same contract:
 As a client i will abide by the calling conventions as set forth by the interfaces and 
 methods contained within them. 
+
+The standard way to extend an interface is to assemble a new interface deriving from an 
+existing one. This technique is called interface inheritance. It is to be realised that
+unlike classical inheritance we do not inherit any state or implementation,rather we are 
+simply augmenting an existing interface layout with our own.
+
 **********************************************************************************/
