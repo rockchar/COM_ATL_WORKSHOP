@@ -61,13 +61,13 @@ private:
 ________________________________________________________________________________
 |C3DRect|
 
-|IDRaw(VPTR)| ----------------------->|&Draw|-------------------->|Draw(){}|
+|IDRaw(VPTR)| ----------------------->| &Draw    |----------------->|  Draw(){}  |
 
-|IShapeEdit(VPTR)|------------------->|&Fill|-------------------->|Fill(){}|
+|IShapeEdit(VPTR)|------------------->| &Fill    |----------------->|  Fill(){}  |
                                       |
-				                      |&Inverse|----------------->|Inverse(){}|
+				                      | &Inverse |----------------->| Inverse(){}|
 				                      |
-				                      |&Stretch|----------------->|Stretch(int)|
+				                      | &Stretch |----------------->|Stretch(int)|
 ________________________________________________________________________________
 
 **********************************************************************************/
@@ -93,4 +93,77 @@ existing one. This technique is called interface inheritance. It is to be realis
 unlike classical inheritance we do not inherit any state or implementation,rather we are 
 simply augmenting an existing interface layout with our own.
 
+THE COMMON NAMING CONVENTION USED WHEN EXTENDING AN INTERFACE IS TO APPEND A NUMERICAL 
+SUFFIX TO THE ROOT NAME OF THE ORIGINAL INTERFACE(E.G. IDraw,IDraw2,IDraw3 etc )
+
 **********************************************************************************/
+
+interface IDraw2 : public IDraw{
+	virtual void DrawToMemory()  = 0;
+	virtual void DrawToPrinter() = 0;
+};
+// The following is the layout of IDraw2 appended to the alayout of IDraw1
+
+/**********************************************************************************
+--------------------------------------------------
+|------------------|
+|&Draw()           |
+|------------------|
+|&DrawToMemory()   |
+|------------------|
+|&DrawToPointer()  |
+|------------------|
+--------------------------------------------------
+***********************************************************************************/
+
+
+///now let us assume that IDraw2 has become versioned as well. If we extend IDraw2 to support the
+//ability to draw to a metafile, we may write the following interface
+
+// Extending IDraw to one level further 
+interface IDraw3 :public IDraw2 {
+	virtual void DrawtoMetafile() = 0;
+};
+
+// The following is the layout of IDraw3 appended to the alayout of IDraw2
+
+/**********************************************************************************
+--------------------------------------------------
+|------------------|
+|&Draw()           |
+|------------------|
+|&DrawToMemory()   |
+|------------------|
+|&DrawToPointer()  |
+|------------------|
+|&DrawToMetaFile   |
+|------------------|
+--------------------------------------------------
+******************************************************************************************/
+
+/*
+Now we wish to create a class that supports all the drawing behaviours we have defined 
+till now in each of the interfaces. We can simply write a class definition such as :
+*/
+
+class C3DRectEx : public IDraw3{
+public:
+	virtual void Draw();
+	virtual void DrawToMemory();
+	virtual void DrawToPrinter();
+	virtual void DrawtoMetafile();
+};
+
+/******************************************************************************************
+Here we notice that our class is derived from the nth-most (most derived) interface in the 
+inheritance chain which indirectly brings in the functionality up the inheritance chain.
+We may be tempted to set up the class definition that looks like this:
+
+class CMegaDrawer:public IDRaw, public IDraw2, public IDraw3
+{
+      ///
+}
+
+#### the above will not work as IDraw3 will hide the shared members of IDraw2 and IDraw2 will 
+hide the members of IDraw
+*******************************************************************************************/
