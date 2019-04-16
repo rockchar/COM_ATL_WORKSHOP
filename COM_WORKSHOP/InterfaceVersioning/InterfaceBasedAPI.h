@@ -118,6 +118,6 @@ bool GetInterfaceFromC3DRect(INTERFACEID iiD, void ** iInterFacePtr)
 
 	//the IID does not exist
 	*iInterFacePtr = NULL;
-	printf("Interface not supported");
+	printf("Interface %d not supported",iiD);
 	return false;
 }

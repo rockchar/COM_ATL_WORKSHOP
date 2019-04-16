@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InterfaceBasedProgramming",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InterfaceVersioning", "InterfaceVersioning\InterfaceVersioning.vcxproj", "{48FAF62C-C98E-4DC6-AA31-C954EE5A4594}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LabInterfaceBasedProgramming", "LabInterfaceBasedProgramming\LabInterfaceBasedProgramming.vcxproj", "{BB2BA837-C853-48B1-8366-DE62D3ED7011}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +23,10 @@ Global
 		{48FAF62C-C98E-4DC6-AA31-C954EE5A4594}.Debug|Win32.Build.0 = Debug|Win32
 		{48FAF62C-C98E-4DC6-AA31-C954EE5A4594}.Release|Win32.ActiveCfg = Release|Win32
 		{48FAF62C-C98E-4DC6-AA31-C954EE5A4594}.Release|Win32.Build.0 = Release|Win32
+		{BB2BA837-C853-48B1-8366-DE62D3ED7011}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BB2BA837-C853-48B1-8366-DE62D3ED7011}.Debug|Win32.Build.0 = Debug|Win32
+		{BB2BA837-C853-48B1-8366-DE62D3ED7011}.Release|Win32.ActiveCfg = Release|Win32
+		{BB2BA837-C853-48B1-8366-DE62D3ED7011}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
