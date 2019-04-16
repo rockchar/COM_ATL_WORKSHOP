@@ -32,5 +32,5 @@ void C3DRect::Inverse()
 
 void C3DRect::Stretch(int nFactor)
 {
-	std::cout << "Rectangle is now stretching" << std::endl;
+	std::cout << "Rectangle is now stretching by a factor of " <<nFactor << std::endl;
 }

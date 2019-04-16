@@ -7,7 +7,7 @@
     </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
+    <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -24,13 +24,13 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InterfaceDefinitions.h">
+    <ClInclude Include="C3DRect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ICarInterface.h">
+    <ClInclude Include="Interfaces.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InterfaceBasedAPI.h">
+    <ClInclude Include="rectfunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,10 +38,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InterfaceVersioning.cpp">
+    <ClCompile Include="LabInterfaceBasedProgramming.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InterfaceDefinitions.cpp">
+    <ClCompile Include="C3DRect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
