@@ -34,3 +34,31 @@ void C3DRect::Stretch(int nFactor)
 {
 	std::cout << "Rectangle is now stretching by a factor of " <<nFactor << std::endl;
 }
+
+C3DRectEx::C3DRectEx()
+{
+}
+
+C3DRectEx::~C3DRectEx()
+{
+}
+
+void C3DRectEx::Draw()
+{
+	std::cout << "Drawing 3dRectEx" << std::endl;
+}
+
+void C3DRectEx::DrawToMemory()
+{
+	std::cout << "Drawing to memory" << std::endl;
+}
+
+void C3DRectEx::DrawToMetaFile()
+{
+	std::cout << "Drawing to metafile" << std::endl;
+}
+
+void C3DRectEx::DrawToPrinter()
+{
+	std::cout << "Drawing to Printer" << std::endl;
+}

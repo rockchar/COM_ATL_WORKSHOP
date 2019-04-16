@@ -15,3 +15,16 @@ public:
 
 };
 
+
+class C3DRectEx : public IDraw3 {
+public:
+	C3DRectEx();
+	virtual ~C3DRectEx();
+	//IDraw3
+	virtual void Draw();
+	virtual void DrawToMemory();
+	virtual void DrawToMetaFile();
+	virtual void DrawToPrinter();
+
+};
+
