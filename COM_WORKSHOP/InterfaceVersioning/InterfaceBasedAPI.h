@@ -1,5 +1,5 @@
 #include"InterfaceDefinitions.h"
-
+#include<stdio.h>
 
 
 
@@ -56,11 +56,68 @@ void MainFunction()
 }
 
 
-/******************************************************************************
+/***********************************************************************************
 IDENTIFYING INTERFACES:
+In order for a client to extract a specific interface from the object, we need to 
+setup sum further API level support.
 
+We will create a method that is able to return an interface pointer to a client. 
+But first we need a way to uniquely identify every possible interface used by our
+current application.
 
+1. Approach 1 : Assign a text literal to each interface and perform some sort of
+				string comparisons to test which interface pointer to return.
 
+2. Approach 2 : A simpler approach and one taken by COM is to use unique numerical 
+                values. Lets use numerical tags and define a custom enumeration called 
+				INTERFACEID:
 
+*************************************************************************************/
 
-********************************************************************************/
+enum INTERFACEID
+{
+	//id for Draw
+	IDRAW      = 0,
+	//id for shape edit
+	ISHAPEEDIT = 1,
+	// id for draw2
+	IDRAW2     = 2,
+	//id for draw3
+	IDRAW3     = 3
+};
+
+/**************************************************************************************
+Now we have a way to refer to an interfcae by name in our code, we can create the final
+function in our API GetInterfaceFrom3DRect() This function will take two parameters:
+The requested interfcae identifier( a value from the INTERFACE ID enum ) and also some 
+place in the memory where to store the retrieved.
+
+This will be very handy for the client as it can also use to test the success or the 
+failure of the function invocaion.
+
+***************************************************************************************/
+
+bool GetInterfaceFromC3DRect(INTERFACEID iiD, void ** iInterFacePtr)
+{
+	if (ptheRect == NULL){
+		printf("Error you forgot to create the Rectangle");
+		return false;
+	}
+
+	if (iiD == IDRAW){
+			//the client wants an access to IDraw
+			*iInterFacePtr = (IDraw *) ptheRect;
+			return true;
+		}
+	if (iiD == ISHAPEEDIT){
+		//client wants access to IShape edit
+		*iInterFacePtr = (IShapeEdit *)ptheRect;
+		return true;
+
+	}
+
+	//the IID does not exist
+	*iInterFacePtr = NULL;
+	printf("Interface not supported");
+	return false;
+}
