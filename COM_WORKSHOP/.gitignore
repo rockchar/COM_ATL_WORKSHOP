@@ -1,0 +1,28 @@
+# Dont track the contents of the following folders 
+Debug/
+Release/
+
+# compiled source #
+*.opensdf,*.sdf,*.suo,*.exe,*.ilk,*.pdb,*.obj,*.pch,*.idb,*.filters
+*.user
+*.ilk
+*.exe
+*.pdb
+*.tlog
+*.obj
+*.tlog
+*.manifest
+*.res
+*.lastbuildstate
+*.log
+*.pch
+*.cache
+*.rc
+*.idb
+*.ipch
+*.db
+*.db-wal
+*.db-shm
+*.opendb
+*.suo
+
