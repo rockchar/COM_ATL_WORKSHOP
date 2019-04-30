@@ -25,4 +25,5 @@ Release/
 *.db-shm
 *.opendb
 *.suo
+*.log
 

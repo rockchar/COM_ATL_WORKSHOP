@@ -6,6 +6,8 @@ The standard way to extend an interface is to derive a new interface from an exi
 
 #include <Windows.h>
 
+//typedef struct interface;
+
 interface IDraw{
 
 	virtual void Draw() = 0;
