@@ -1,3 +1,4 @@
+#include "..\InterfaceVersioning\InterfaceDefinitions.h"
 #include "stdafx.h"
 #include "C3DRect.h"
 #include <iostream>
@@ -62,3 +63,4 @@ void C3DRectEx::DrawToPrinter()
 {
 	std::cout << "Drawing to Printer" << std::endl;
 }
+
