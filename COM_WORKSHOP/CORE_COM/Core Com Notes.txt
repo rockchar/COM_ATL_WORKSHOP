@@ -1,0 +1,87 @@
+ A com compliant object has many intersting traits . 
+
+	 1. COM is language independent:
+		A com interface can be written in C++ , COBOL , vb , java etc. The only true requirement that a language must satisfy is 
+		that it should be able to generate a VTABLE(binary layout) mapping to a COM object.
+		a. Not only Developers can write COM objects in any language, the COM objects themselves can be accessed by any COM language.
+		   For example a JAVA application can access a COM component written in C++ or Delphi.
+		b. COM encapsulates the inner implementation details of the object including the language it was written in. All that the COM
+		   object user sees is a set of well defined interfaces supported by the object.
+
+
+	2. COM provides location transparency
+		Before we understand location transparency lets add a few words to the COM vocabulary(lexicon) 
+
+		1. Process :  A process is a partition of memory containing a running application(i.e an active main thread) along with 
+		any necessary system resources and subsidiary threads and external binaries required by the application.
+
+		2. Client : A client in COM is any piece of sofware that makes use of a COM object.
+
+		3. Server : In COM we define a server as a binary package( DLL or EXE ) that contains one or more COM objects. Typically 
+		a single com server is known to be a home of many related COM objects, each supporting many number of interfaces.
+
+		Always keep in mind that the distinction between client and server can become blurred a little bit as it is common to have 
+		a client using a server that is a client to another server. The following diagram explains it :
+
+		-------------   
+		|UserSevices|
+		|(GUI EXE)	|              Inprocess
+		|Client		|
+		-------------
+		     |
+		--------------   
+		| Middleware |
+		| COM DLL	 |             out of process
+		|Sever and Cl|
+		--------------
+			 |
+		-------------   
+		|Backend	|
+		|COM DLL/EXE|             remote
+		|			|
+		-------------
+
+		Now with the three terms in place i.e Client, Server and Process we can now distinguish between the possible relationships
+		a client and server may have 
+
+		1. An In-Process Relationship.
+		2. An Out of Process Relationship.
+		3. A Remote Relationship.
+
+__________________________________________________________________________________________________________________________
+
+UNDERSTANDING THE IN-PROCESS RELATIONSHIP:
+
+The relationship is abbreviated as in-proc relationship. In-proc servers are loaded into the same memory partion(process)
+in which the client application is running. They are in the same memory partion of the client that they are servicing.
+
+Key Benefit : 
+Speed. Since the servers are loaded into the same memory partition as client, the calls to the interfaces
+are as fast as making a local function call as the client and the server are communicating through interface pointers.
+
+Drawback : 
+1. Fault  Tolerance : The biggest drawback of a in-proc server is robustness or low level of fault tolerance. If the server crashes
+it will bring down the entire client process too.
+2. Security : The in-process COM server will always take the security context of the Client Application they are loaded into.
+
+NOTE: 
+COM has different threading models. IF the client and the server share different threading models then direct interface 
+connection is not achieved.
+
+
+UNDERSTANDING THE OUT-OF-PROCESS RELATIONSHIP
+
+The out-of-process relationship is also termed as a local relationship. The client and the server reside on the same 
+physical machine but they run in their own individual(distinct) memory segment as separate processes.
+
+The two processes run with their own security contexts hence a higher level of security.
+
+The major drawback is that it is slower as the requests have to be packaged, sent and unpackaged between process boundaries.
+While COM takes care of this packing and unpacking using a technique called universal marshalling and we rarely have to take 
+care of it, but the process itself is time consuming.
+
+The major advantage is that the system is fault tolerant as if the out of process com server crashes the client keeps running 
+in its own process space.
+
+
+
