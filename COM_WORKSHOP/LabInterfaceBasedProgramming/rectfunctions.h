@@ -13,7 +13,7 @@ That way you stand a much better chance of understanding what each function does
 
 Using a single global pointer as in this case that is managed by this file is OK
 */
-C3DRect * ptheRect = NULL;
+C3DRect * gPtheRect = NULL;
 
 void CreateA3DRect();
 void Destroy3DRect();
@@ -21,28 +21,28 @@ void Destroy3DRect();
 
 void CreateA3DRect(){
 
-	ptheRect = new C3DRect();
+	gPtheRect = new C3DRect();
 
 }
 
 void Destroy3DRect()
 {
-	delete ptheRect;
+	delete gPtheRect;
 }
 
 bool GetInterfaceFrom3DRect(INTERFACEID iid, void ** iFacePtr)
 {
-	if (ptheRect == NULL)
+	if (gPtheRect == NULL)
 		std::cout << "The 3D rectangle is not created yet" << std::endl;
 
 	if (iid == IDRAW)
 	{
-		*iFacePtr = (IDraw *) ptheRect;
+		*iFacePtr = (IDraw *)gPtheRect;
 		return true;
 	}
 	if (iid == ISHAPEEDIT)
 	{
-		*iFacePtr = (IShapeEdit *)ptheRect;
+		*iFacePtr = (IShapeEdit *)gPtheRect;
 		return true;
 	}
 
