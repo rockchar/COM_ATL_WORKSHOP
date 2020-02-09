@@ -1,5 +1,20 @@
 #pragma once
 #include<wtypes.h>
+#include<objbase.h>
+
+
+/*************************************** Define the GUIDS for IDraw interfaces and IShapeEdit **************************/
+// {3FBF777C-FD49-437A-A4FB-25D9B5F16805}
+DEFINE_GUID(IID_IDRAW ,
+	0x3fbf777c, 0xfd49, 0x437a, 0xa4, 0xfb, 0x25, 0xd9, 0xb5, 0xf1, 0x68, 0x5);
+
+// {D87CBDBB-45D1-4091-AD4C-AF184981161F}
+DEFINE_GUID(IID_ISHAPEEDIT,
+	0xd87cbdbb, 0x45d1, 0x4091, 0xad, 0x4c, 0xaf, 0x18, 0x49, 0x81, 0x16, 0x1f);
+
+
+
+/************************************************************************************************************************/
 
 enum FILLTYPE {
 	HATCH = 0,
@@ -16,7 +31,8 @@ When defining COM interfaces using the set of macros, we do have some other help
 #define DECLARE_INTERFACE(iface)  interface iface
 #define DECLARE_INTERFACE_(iface, baseiface)  interface iface : public baseiface
 The PURE macro evaluates to the =0 suffix of a pure virtual function definition. The DECLARE_INTERFACE variations 
-allow you to send in interface names and any base interface as parameters. These macros are not necessary, but can help streamline interface definitions. Here would be a final variation of IShapeEdit using these optional macros:
+allow you to send in interface names and any base interface as parameters. These macros are not necessary, but can help streamline 
+interface definitions. Here would be a final variation of IShapeEdit using these optional macros:
 
 // A very COM compliant interface definition.
 DECLARE_INTERFACE_(IShapeEdit, IUnknown)
@@ -43,6 +59,31 @@ DECLARE_INTERFACE_(IDraw, IUnknown)
 {
 	STDMETHOD(Draw)() PURE;
 };
+
+//lets define a class called Hexagon with methods to draw using IDraw and alter the shape usinf IShapeEdit
+
+class CoHexagon :public IDraw, public IShapeEdit {
+public:
+	CoHexagon();
+	~CoHexagon();
+
+public: //method implementations
+	STDMETHODIMP_(ULONG) AddRef();
+	STDMETHODIMP_(ULONG) Release();
+
+	STDMETHODIMP QueryInterface(REFIID IID, void ** ppv);
+	STDMETHODIMP Draw();
+	STDMETHODIMP Fill(FILLTYPE fType);
+	STDMETHODIMP Inverse();
+	STDMETHODIMP Stretch(int nFactor);
+	
+private:
+	ULONG m_referenceCount;     //initialised to zero in constructor
+
+};
+
+
+
 
 #elif
 

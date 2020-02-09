@@ -133,12 +133,11 @@
     <None Include="Overloading ostream.pdf" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="C3dRectInterfaces.cpp" />
     <ClCompile Include="CORE_COM.cpp" />
-    <ClCompile Include="Interfaces.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C3dRectInterfaces.h" />
-    <ClInclude Include="Interfaces.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
