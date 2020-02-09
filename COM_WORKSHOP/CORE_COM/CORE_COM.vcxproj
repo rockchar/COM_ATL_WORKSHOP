@@ -76,6 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>_COMCOMPLIANT;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,6 +129,7 @@
   <ItemGroup>
     <None Include="ConstCorrectness.pdf" />
     <None Include="CORE_COM.docx" />
+    <None Include="cpp.hint" />
     <None Include="Overloading ostream.pdf" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +137,7 @@
     <ClCompile Include="Interfaces.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="C3dRectInterfaces.h" />
     <ClInclude Include="Interfaces.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

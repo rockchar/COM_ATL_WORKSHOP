@@ -32,9 +32,10 @@ HRESULT CoHexagon::QueryInterface(const REFIID riid, void ** ppv)
 	return E_NOTIMPL;
 }
 
-/******************************************************************************************
+/**************************************************************************************************************************
 // QueryInterface() is implemented by each and every coclass, and provides
 // a way to return an interface pointer to the client.
+
 HRESULT CoHexagon::QueryInterface(REFIID riid, void** ppv)
 {
 	 // Which interface does the client want?
@@ -77,7 +78,10 @@ if(*ppv)
 __________________________________________________________________________________________________________________________
 
 Implementing QueryInterface() Using static_cast<>
-As an alternative to traditional C++ casting, you may find other implementations of QueryInterface() making use of static_cast<>. One advantage of this approach is that compile-time errors will be generated if an illegal cast is attempted. Functionally, however, each approach yields the same result: returning a portion of the object to the interested client (i.e., casting the this pointer).
+As an alternative to traditional C++ casting, you may find other implementations of QueryInterface() making use of 
+static_cast<>. One advantage of this approach is that compile-time errors will be generated if an illegal cast is 
+attempted. Functionally, however, each approach yields the same result: returning a portion of the object to the 
+interested client (i.e., casting the this pointer).
 
 If we were to rewrite CoHexagon's QueryInterface() implementation using static_cast<>, we would see the following:
 

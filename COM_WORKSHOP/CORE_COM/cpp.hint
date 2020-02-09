@@ -1,0 +1,29 @@
+// Hint files help the Visual Studio IDE interpret Visual C++ identifiers
+// such as names of functions and macros.
+// For more information see https://go.microsoft.com/fwlink/?linkid=865984
+#define STDMETHOD_(type, method)
+#define STDMETHOD_(type, method) type (STDMETHODCALLTYPE * method)
+// Hint files help the Visual Studio IDE interpret Visual C++ identifiers
+// such as names of functions and macros.
+// For more information see https://go.microsoft.com/fwlink/?linkid=865984
+#define STDMETHOD(method)
+#define STDMETHOD(method) HRESULT (STDMETHODCALLTYPE * method)
+// Hint files help the Visual Studio IDE interpret Visual C++ identifiers
+// such as names of functions and macros.
+// For more information see https://go.microsoft.com/fwlink/?linkid=865984
+#define PURE
+// Hint files help the Visual Studio IDE interpret Visual C++ identifiers
+// such as names of functions and macros.
+// For more information see https://go.microsoft.com/fwlink/?linkid=865984
+#define STDMETHOD(method)
+#define STDMETHOD(method) HRESULT (STDMETHODCALLTYPE * method)
+// Hint files help the Visual Studio IDE interpret Visual C++ identifiers
+// such as names of functions and macros.
+// For more information see https://go.microsoft.com/fwlink/?linkid=865984
+#define DECLARE_INTERFACE_(iface, baseiface)
+#define DECLARE_INTERFACE_(iface, baseiface) DECLARE_INTERFACE(iface)
+// Hint files help the Visual Studio IDE interpret Visual C++ identifiers
+// such as names of functions and macros.
+// For more information see https://go.microsoft.com/fwlink/?linkid=865984
+#define STDMETHOD(method)
+#define STDMETHOD(method) HRESULT (STDMETHODCALLTYPE * method)
