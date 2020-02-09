@@ -126,7 +126,16 @@
     <Text Include="Core Com Notes.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ConstCorrectness.pdf" />
     <None Include="CORE_COM.docx" />
+    <None Include="Overloading ostream.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CORE_COM.cpp" />
+    <ClCompile Include="Interfaces.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Interfaces.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
